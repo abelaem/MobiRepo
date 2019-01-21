@@ -1,0 +1,160 @@
+﻿@model MovieHub.ViewModels.SalesOrdersViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="alert alert-success alert-dismissible fade in">
+
+    <strong>Info!</strong>  Created Successfully.
+</div>
+@Html.Partial("_ModalCreate")
+<h2>Sales</h2>
+<button type="button" style="margin-bottom:10px " class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    New
+</button>
+
+<table class="table" id="Products">
+    <thead>
+    <td>Reference</td>
+    <td>Customer</td>
+    <td>CreatedDate</td>
+    <td>CreatedBy</td>
+    <td>SalesTotal</td>
+    <td></td>
+    </thead>
+    <tbody>
+        @foreach (var sales in Model.Sales)
+        {
+            <tr>
+                <td>@sales.Reference</td>
+                <td>@Model.Partners.SingleOrDefault(d => d.Id == sales.PartnerId).Name</td>
+                <td>@sales.CreatedDate</td>
+                <td>@sales.CreatedBy</td>
+                <td></td>
+            </tr>
+
+
+        }
+
+    </tbody>
+
+</table>
+
+@section scripts
+{
+
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+    <script src="~/javascripts/jquery.serializeJSON.js"></script>
+    <script src="~/javascripts/FormScripts.js"></script>
+    <script src="~/Scripts/bootbox.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
+    <script>
+        $(".alert").hide();
+        $().ready(function () {
+
+
+            $(".clc").on("click",
+                function () {
+                    // alert($("#Id").val());
+                    var $data = $.formObject($('form'));
+                    if (typeof ($("#Id").val()) != 'undefined' && $("#Id").val() != null && parseInt($("#Id").val()) !== 0) {
+                        creatoredit('PUT', '/api/ProductsApi?id=' + $("#Id").val(), $data);
+                    }
+                    else {
+
+                        creatoredit('Post', '/api/ProductsApi', $data);
+                    }
+
+                }
+
+            );
+
+            $("#Products").DataTable();
+
+
+            $("#Products").on("click", ".deletelink",
+                function () {
+
+                    var $id = $(this).attr("data-products-Id");
+                    bootbox.confirm("Are you sure you want to delete " + $(this).attr("data-products-Name"), function (result) {
+
+                        $.ajax({
+                            contentType: 'application/json',
+                            type: "Delete",
+                            url: "/api/ProductsApi?id=" + $id,
+                            success: function (data, textStatus, jqXHR) {
+
+                                location.reload();
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                alert(jqXHR.statusText);
+
+                            }
+                        });
+
+                    });
+
+                });
+
+            $("#Products").on("click", ".editlink",
+                function () {
+
+                    $('#myModal').modal('show');
+
+                    $.ajax({
+                        contentType: 'application/json',
+                        type: "GET",
+                        url: "/api/ProductsApi/" + $(this).attr("data-products-Id"),
+                        success: function (data, textStatus, jqXHR) {
+                            console.log(data);
+                            populateForm($('form'), json2html_name_list(data))
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR.statusText);
+                            console.log("wrong");
+                        }
+                    });
+
+
+                });
+
+        })
+
+
+
+
+
+
+        $("#Partner_Name").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '/api/Partners?searchText=' + request.term,
+                    type: "POST",
+                    contentType: 'application/json',
+                    
+                    success: function (data) {
+                        response($.map(data, function (val, item) {
+                            return {
+                                label: val.Name,
+                                value: val.Name,
+                                PartnerId: val.Id
+                            }
+                        }))
+                    }
+                })
+            },
+            select: function (event, ui) {
+                $("#PartnerId").val(ui.item.PartnerId);
+
+            }
+        });
+
+
+
+    </script>
+
+}

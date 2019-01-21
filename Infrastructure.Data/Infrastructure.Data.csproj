@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5747360A-9D4D-418A-87B3-C4E69BF807DA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Infrastructure.Data</RootNamespace>
+    <AssemblyName>Infrastructure.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GenericDataRepository.cs" />
+    <Compile Include="Migrations\201812211709121_newmigration.cs" />
+    <Compile Include="Migrations\201812211709121_newmigration.Designer.cs">
+      <DependentUpon>201812211709121_newmigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812211713149_newmigrationuomid.cs" />
+    <Compile Include="Migrations\201812211713149_newmigrationuomid.Designer.cs">
+      <DependentUpon>201812211713149_newmigrationuomid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812211714084_newmigrationuomidreq.cs" />
+    <Compile Include="Migrations\201812211714084_newmigrationuomidreq.Designer.cs">
+      <DependentUpon>201812211714084_newmigrationuomidreq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812250404198_dfsdfdsfdsfd.cs" />
+    <Compile Include="Migrations\201812250404198_dfsdfdsfdsfd.Designer.cs">
+      <DependentUpon>201812250404198_dfsdfdsfdsfd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812270022143_sales.cs" />
+    <Compile Include="Migrations\201812270022143_sales.Designer.cs">
+      <DependentUpon>201812270022143_sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812270255496_salesmodified.cs" />
+    <Compile Include="Migrations\201812270255496_salesmodified.Designer.cs">
+      <DependentUpon>201812270255496_salesmodified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901061632532_salesmodifiedmore.cs" />
+    <Compile Include="Migrations\201901061632532_salesmodifiedmore.Designer.cs">
+      <DependentUpon>201901061632532_salesmodifiedmore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901070040148_salesmodifiedmorej.cs" />
+    <Compile Include="Migrations\201901070040148_salesmodifiedmorej.Designer.cs">
+      <DependentUpon>201901070040148_salesmodifiedmorej.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901101940406_migraations34.cs" />
+    <Compile Include="Migrations\201901101940406_migraations34.Designer.cs">
+      <DependentUpon>201901101940406_migraations34.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901210359331_dsfdsf.cs" />
+    <Compile Include="Migrations\201901210359331_dsfdsf.Designer.cs">
+      <DependentUpon>201901210359331_dsfdsf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MobiERPDbContext.cs" />
+    <Compile Include="MobiRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Entities\Domain.Entities.csproj">
+      <Project>{4BE63666-58D3-4B8D-9E30-E56DF5FAC2A9}</Project>
+      <Name>Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Interfaces\Domain.Interfaces.csproj">
+      <Project>{e2497ba1-dbd9-45f1-9283-1828a8d7bbd5}</Project>
+      <Name>Domain.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812211709121_newmigration.resx">
+      <DependentUpon>201812211709121_newmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812211713149_newmigrationuomid.resx">
+      <DependentUpon>201812211713149_newmigrationuomid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812211714084_newmigrationuomidreq.resx">
+      <DependentUpon>201812211714084_newmigrationuomidreq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812250404198_dfsdfdsfdsfd.resx">
+      <DependentUpon>201812250404198_dfsdfdsfdsfd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812270022143_sales.resx">
+      <DependentUpon>201812270022143_sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812270255496_salesmodified.resx">
+      <DependentUpon>201812270255496_salesmodified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901061632532_salesmodifiedmore.resx">
+      <DependentUpon>201901061632532_salesmodifiedmore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901070040148_salesmodifiedmorej.resx">
+      <DependentUpon>201901070040148_salesmodifiedmorej.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901101940406_migraations34.resx">
+      <DependentUpon>201901101940406_migraations34.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901210359331_dsfdsf.resx">
+      <DependentUpon>201901210359331_dsfdsf.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
