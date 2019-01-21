@@ -1,0 +1,55 @@
+{{title}}{{sale.Id|json}}
+<div class="row">
+    <div class="col-md-6">
+       <form [formGroup]="salesform" (ngSubmit)="save()">
+            <fieldset>
+                    <legend>
+                        Sales
+                    </legend>
+                  <input [(ngModel)]="sale.Id"   name="Id" #Id formControlName="Id" type="hidden" >
+                  
+                    <div class="form-group">
+                        <label>Reference</label>
+                        <input [(ngModel)]="sale.Reference"   name="Reference" #Reference formControlName="Reference" type="text" class="form-control">
+                        <div *ngIf="Reference.touched && !Reference.valid" class="alert alert-danger">
+                          Reference is required.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Created By</label>
+                      <input [(ngModel)]="sale.CreatedBy"   name="CreatedBy" #CreatedBy formControlName="CreatedBy" type="text" class="form-control">
+                      <div *ngIf="CreatedBy.touched && !CreatedBy.valid" class="alert alert-danger">
+                        CreatedBy is required.
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Buyer</label>
+                    <input [(ngModel)]="sale.PartnerId"   name="PartnerId" #PartnerId formControlName="PartnerId" type="text" class="form-control">
+                    <input [(ngModel)]="sale.PartnerId"   name="Partner" #PartnerId formControlName="Partner" type="text" class="form-control">
+                   
+                    <div *ngIf="PartnerId.touched && !PartnerId.valid" class="alert alert-danger">
+                      PartnerId is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label>Sales Date</label>
+                  <input [(ngModel)]="sale.CreatedDate"   name="CreatedDate" #CreatedDate formControlName="CreatedDate" type="text" class="form-control">
+                  <div *ngIf="CreatedDate.touched && !CreatedDate.valid" class="alert alert-danger">
+                    Created Date is required.
+                  </div>
+              </div>
+              
+              <div class="form-group">
+                <label>Sales Total</label>
+                <input [(ngModel)]="sale.SalesTotal"   name="SalesTotal" #SalesTotal formControlName="SalesTotal" type="text" class="form-control">
+                <div *ngIf="SalesTotal.touched && !SalesTotal.valid" class="alert alert-danger">
+                  Created Date is required.
+                </div>
+            </div>
+
+                  <button type="submit" >Submit </button>
+                </fieldset>
+        </form>
+  </div>
+</div>

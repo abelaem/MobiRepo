@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2">
+       
+      <i class="glyphicon glyphicon-plus clickable"
+          (click)="add()" >
+      </i>
+       
+      </span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">Product</th>
+          <th class="text-center">Quantity</th>
+          <th class="text-center">UnitPrice</th>
+          <th class="text-center">Sub Totla</th>
+          <th class="text-center"></th>
+        </tr>
+        <tr *ngFor="let line of orderline; let id = index">
+          <td contenteditable="true"  >
+            <mat-form-field class="example-full-width">
+              <input type="text" placeholder="" aria-label="Number" matInput [formControl]="searchTerm" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let item of searchResult let in = index" [value]='item.Name'>
+                  {{ item.Name}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+
+
+
+
+          </td>
+          <td contenteditable="true" (keyup)="changeValue(id, 'Quantity', $event)" >{{line.Quantity|number}}</td>
+          <td contenteditable="true" (keyup)="changeValue(id, 'UnitPrice', $event)" >{{line.UnitPrice|number}}</td>
+          <td contenteditable="false"  ngDefaultControl name ="line.Subtotal" #line.Subtotall   readonly="readonly" >{{line.Subtotal|number}}</td>
+        
+          <td>
+            <span class="table-remove">
+              <i class="glyphicon glyphicon-remove clickable"
+               (click)="remove(id)" >
+              </i>
+       
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

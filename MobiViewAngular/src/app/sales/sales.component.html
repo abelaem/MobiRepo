@@ -1,0 +1,36 @@
+<h1>Sales</h1>
+<p>
+    <a routerLink="/sales/new" class="btn btn-primary">Add Sales</a>
+</p>
+<table class="table table-striped" >
+	<thead>
+		<tr>
+      <th>Reference</th>
+      <th>Created By</th>
+      <th>Partner</th>
+      <th>Created Date</th>
+      <th>Sales Total</th>
+      <th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let sale of sales" >
+        <td> {{ sale.Reference }} </td>
+        <td>{{ sale.CreatedBy }}</td>
+        <td>{{ sale.PartnerId }}</td>
+        <td>{{ sale.CreatedDate }}</td>
+        <td>{{ sale.SalesTotal }} </td>
+        <td>
+            <a [routerLink]="['/sales', sale.Id]">
+              <i class="glyphicon glyphicon-edit"></i>
+          </a>
+           <i class="glyphicon glyphicon-remove clickable"
+              (click)="deleteSales(sale)" >
+          </i>
+          </td>
+        
+    </tr>
+
+
+    </tbody>
+    </table>

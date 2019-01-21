@@ -1,0 +1,19 @@
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+.glyphicon-remove {
+    color: red;
+}
+
+.center_div{
+    margin: 0 auto;
+    width:80% /* value of your choice which suits your alignment */
+}
+.form-control.ng-invalid.ng-touched
+{
+    border: 1px solid red;
+
+}
+.glyphicon-plus
+{
+
+    color: green
+}
